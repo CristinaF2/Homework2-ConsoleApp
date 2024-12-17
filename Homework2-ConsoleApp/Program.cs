@@ -1,21 +1,38 @@
-﻿namespace Homework2_ConsoleApp
+﻿using Microsoft.VisualBasic;
+using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
+namespace Homework2_ConsoleApp
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            Person.DisplayUserDetails();
-            Person.IsOld();
-            Person.ShowGender();
+            Person.DisplayUserDetails();  
 
             Console.WriteLine();
-            Console.WriteLine("Introduceti un număr:");
-            string input = Console.ReadLine();
-            int numar = Convert.ToInt32(input);
+            int numar;
 
+            while (true)
+            {
+                Console.WriteLine("Introduceti un număr:");
+                string input = Console.ReadLine();
+
+                //bool int.TryParse(string s, out int result);
+                //s: The string you want to convert to an integer.
+                //result: The output variable that will store the converted integer if the conversion is successful.
+                //Return value: A bool indicating whether the conversion succeeded(true) or failed(false).
+
+                if (int.TryParse(input, out numar))
+                {
+                    break; 
+                }
+                else
+                {
+                    Console.WriteLine("Introduceti va rog un număr valid!");
+                }
+            }
             VerificaParPozitivSauNegativ(numar);
-
-
         }
 
         public static void VerificaParPozitivSauNegativ(int numar)
@@ -37,7 +54,14 @@
                 }
                 else
                 {
-                    Console.WriteLine("Numărul este impar");
+                   if (numar > 0)
+                   {
+                      Console.WriteLine("Numărul este impar pozitiv");
+                   }
+                   else
+                   {
+                      Console.WriteLine("Numărul este impar negativ");
+                   }
                 }
             }
      }

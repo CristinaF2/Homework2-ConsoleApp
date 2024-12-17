@@ -21,6 +21,8 @@ namespace Homework2_ConsoleApp
             Console.WriteLine($"     - Last Name: {LastName}");
             Console.WriteLine($"     - Gender: {Gender}");
             Console.WriteLine($"You will be {ComputeAge(15)} years old in 15 years!");
+            IsOld();
+            ShowGender();
         }
 
         public static void IsOld()
