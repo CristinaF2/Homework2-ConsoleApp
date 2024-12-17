@@ -22,5 +22,37 @@ namespace Homework2_ConsoleApp
             Console.WriteLine($"     - Gender: {Gender}");
             Console.WriteLine($"You will be {ComputeAge(15)} years old in 15 years!");
         }
+
+        public static void IsOld()
+        {
+            if (Age>=100)
+            {
+                Console.WriteLine("You are ancient!");
+            }
+            else if (Age>=50)
+            {
+                Console.WriteLine("You are old!");
+            }
+            else
+            {
+                Console.WriteLine("You are still young!");
+            }
+        }
+
+        public static void ShowGender()
+        {
+            switch (Gender)
+            {
+                case "Male":
+                    Console.WriteLine("You are a male!");
+                    break;
+                case "Female":
+                    Console.WriteLine("You are a female!");
+                    break;
+                default:
+                    Console.WriteLine("You haven't specified your gender!");
+                    break;
+            }
+        }
     }
 }
