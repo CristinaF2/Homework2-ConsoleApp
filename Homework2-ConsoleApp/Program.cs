@@ -33,6 +33,21 @@ namespace Homework2_ConsoleApp
                 }
             }
             VerificaParPozitivSauNegativ(numar);
+            Console.WriteLine();
+
+            // Add skills
+            Person.AddSkill("Cooking");
+            Person.AddSkill("Photography");
+            Person.AddSkill("Programming");
+            Person.AddSkill("Testing");
+            Person.AddSkill("Ninja");
+            Person.AddSkill("Swimming");
+            Person.AddSkill("CIA");
+            Person.AddSkill("Dancing");
+            Person.AddSkill("Singing");
+
+            // Display skills
+            Person.DisplaySkills();
         }
 
         public static void VerificaParPozitivSauNegativ(int numar)

@@ -9,6 +9,38 @@ namespace Homework2_ConsoleApp
         public static string Gender { get; set; } = "Female";
         public static int Age { get; set; } = 34;
 
+        public static List<string> Skills = new List<string>();
+
+        public static void AddSkill(string skill)
+        {
+            Skills.Add(skill);
+            Console.WriteLine($"Added a new skill: {skill}");
+        }
+
+        public static void DisplaySkills()
+        {
+            Console.WriteLine("\nThe person has the following skills:");
+            foreach (string skill in Skills)
+            {
+                if (skill == "Ninja")
+                {
+                    // Skip "Ninja"
+                    continue;
+                }
+                else if (skill == "CIA")
+                {
+                    // Exit loop and display classified message
+                    Console.WriteLine("\n>>> Classified information, no further skills are displayed! <<<");
+                    break;
+                }
+                else
+                {
+                    // Display the skill
+                    Console.Write($"{skill}; ");
+                }
+            }
+        }
+
         public static int ComputeAge(int years)
         {
             return Age + years;
