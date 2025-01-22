@@ -69,7 +69,6 @@ namespace Homework2_ConsoleApp
             int counter = 1;
             while (counter < number)
             {
-
                 if (counter == 10)
                 {
                     Console.WriteLine("\nNumber skipped!");
@@ -83,7 +82,6 @@ namespace Homework2_ConsoleApp
                 }
                 Console.Write($"{counter}; "); 
                 counter++;
-
             }
         }
 
@@ -94,7 +92,6 @@ namespace Homework2_ConsoleApp
             int counter = 1;
             do
             {
-
                 switch (counter)
                 {
                     case 10:
