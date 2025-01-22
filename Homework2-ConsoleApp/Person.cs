@@ -41,6 +41,83 @@ namespace Homework2_ConsoleApp
             }
         }
 
+        public static void CountToWhileDoLoop(int number)
+        {
+            Console.WriteLine($"Counting to {number}:");
+            int counter = 1;
+            while (counter < number)
+            {
+                               
+                switch (counter)
+                {
+                    case 10:
+                        Console.WriteLine("\nNumber skipped!");
+                        break;
+                    case 99:
+                        Console.WriteLine("\nCannot count past 99!");
+                        return; //exit the method
+                    default:
+                        Console.Write($"{counter}; ");
+                        break;
+                }
+                counter++;
+
+            }
+        }
+
+        public static void CountToWhileDoLoopAndIfCondition(int number)
+        {
+            Console.WriteLine($"Counting to {number}:");
+            int counter = 1;
+            while (counter < number)
+            {
+
+                if (counter == 10)
+                {
+                    Console.WriteLine("\nNumber skipped!");
+                    counter++;
+                    continue;
+                }
+                else if (counter == 99)
+                {
+                    Console.WriteLine("\nCannot count past 99!");
+                    break;
+                }
+                Console.Write($"{counter}; "); 
+                counter++;
+
+            }
+        }
+
+
+        public static void CountToDoWhileLoop(int number)
+        {
+            Console.WriteLine($"Counting to {number}:");
+            int counter = 1;
+            do
+            {
+
+                switch (counter)
+                {
+                    case 10:
+                        Console.WriteLine("\nNumber skipped!");
+                        break;
+                    case 99:
+                        Console.WriteLine("\nCannot count past 99!");
+                        break;
+                    default:
+                        Console.Write($"{counter}; ");
+                        break;
+                }
+                if (counter==99)
+                {
+                    break;
+                }
+                counter++;
+
+            } while (counter < number);
+        }
+
         public static int ComputeAge(int years)
         {
             return Age + years;

@@ -48,6 +48,15 @@ namespace Homework2_ConsoleApp
 
             // Display skills
             Person.DisplaySkills();
+
+            Console.WriteLine();
+            Person.CountToWhileDoLoop(110);
+
+            Console.WriteLine();
+            Person.CountToDoWhileLoop(130);
+
+            Console.WriteLine();
+            Person.CountToWhileDoLoopAndIfCondition(140);
         }
 
         public static void VerificaParPozitivSauNegativ(int numar)
