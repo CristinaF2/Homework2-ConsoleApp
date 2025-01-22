@@ -46,8 +46,7 @@ namespace Homework2_ConsoleApp
             Console.WriteLine($"Counting to {number}:");
             int counter = 1;
             while (counter < number)
-            {
-                               
+            {          
                 switch (counter)
                 {
                     case 10:
@@ -61,7 +60,6 @@ namespace Homework2_ConsoleApp
                         break;
                 }
                 counter++;
-
             }
         }
 
