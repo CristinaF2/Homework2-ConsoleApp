@@ -8,7 +8,8 @@ namespace Homework2_ConsoleApp
     {
         public static void Main(string[] args)
         {
-            Person.DisplayUserDetails();  
+            
+             Person.DisplayUserDetails();  
 
             Console.WriteLine();
             int numar;
@@ -57,6 +58,32 @@ namespace Homework2_ConsoleApp
 
             Console.WriteLine();
             Person.CountToWhileDoLoopAndIfCondition(140);
+
+            Console.WriteLine();
+            Person.Test1();
+
+            Console.WriteLine();
+            Person.Test2();
+
+            Console.WriteLine();
+            Person.Test3();
+
+            Console.WriteLine();
+            Person.Test4();
+
+
+            Console.WriteLine();
+            Person.Test5();
+            
+            Console.WriteLine();
+            Person.Test6();
+
+            
+            Console.WriteLine();
+            Person.Test7();
+            
+            Console.WriteLine();
+            Person.Test8();
         }
 
         public static void VerificaParPozitivSauNegativ(int numar)
