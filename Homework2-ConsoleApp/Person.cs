@@ -446,9 +446,10 @@ namespace Homework2_ConsoleApp
         {
 
             List<int> list = new List<int>();
-            int listSize = 0;
 
-            while (true)
+
+            /*
+            while (true) 
             {
                
                 Console.WriteLine($"Please input the size of the list:");
@@ -461,24 +462,38 @@ namespace Homework2_ConsoleApp
                     Console.WriteLine("!!! The size of the list must be a positive number greater than 0 !!! ");
                 }
             }
-
+            */
+            
+            Console.WriteLine($"Please input the size of the list:");
+            string listSizeInput = Console.ReadLine();
+            bool isListSizeParsed = int.TryParse(listSizeInput, out int  listSize);
+           
+           
+            while (isListSizeParsed==false || listSize <= 0)
+            {
+                Console.WriteLine("!!! The size of the list must be a positive number greater than 0 !!! ");
+                Console.WriteLine($"Please input again the size of the list:");
+                listSizeInput = Console.ReadLine();
+                isListSizeParsed = int.TryParse(listSizeInput, out listSize);
+            }
+            
+           
 
             for (int i = 0; i < listSize; i++)
             {
                 Console.WriteLine($"Please input a number for list[{i}]:");
-
                 string input = Console.ReadLine();
-                int number = 0;
+                bool isNumberParsed = int.TryParse(input, out int number);
 
-                while (!int.TryParse(input, out number))
+
+                while (isNumberParsed==false)
                 {
                     Console.WriteLine("!! You have not entered a valid number !!");
                     Console.WriteLine($"Please input a number for list[{i}]:");
-                    input = Console.ReadLine();  // Căutăm din nou un număr valid
+                    input = Console.ReadLine();  
                 }
 
-                // Dacă am ieșit din while, inputul este un număr valid
-                list.Add(number);  // Adaugă numărul în listă
+                list.Add(number); 
             }
        
 
