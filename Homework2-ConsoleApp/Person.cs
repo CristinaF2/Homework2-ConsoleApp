@@ -1,4 +1,8 @@
 ﻿
+using System.Security.Cryptography;
+using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 namespace Homework2_ConsoleApp
 {
     public static class Person
@@ -46,7 +50,7 @@ namespace Homework2_ConsoleApp
             Console.WriteLine($"Counting to {number}:");
             int counter = 1;
             while (counter < number)
-            {          
+            {
                 switch (counter)
                 {
                     case 10:
@@ -80,7 +84,7 @@ namespace Homework2_ConsoleApp
                     Console.WriteLine("\nCannot count past 99!");
                     break;
                 }
-                Console.Write($"{counter}; "); 
+                Console.Write($"{counter}; ");
                 counter++;
             }
         }
@@ -175,17 +179,17 @@ namespace Homework2_ConsoleApp
 
         public static void Test2()
         {
-            Random numberGen= new Random();
+            Random numberGen = new Random();
 
             int roll1 = 0;
             int roll2 = 1;
             int attempts = 0;
             Console.WriteLine("Press enter to roll the dice.");
 
-            while(roll1 != roll2)
+            while (roll1 != roll2)
             {
                 Console.ReadKey();
-                roll1=numberGen.Next(1,7);
+                roll1=numberGen.Next(1, 7);
                 roll2=numberGen.Next(1, 7);
                 Console.WriteLine("Roll 1: "+ roll1);
                 Console.WriteLine("Roll 2: "+ roll2);
@@ -194,7 +198,7 @@ namespace Homework2_ConsoleApp
             }
             Console.WriteLine($"It took you {attempts} attempts to roll two of a kind.");
 
-           
+
         }
 
         public static void Test3()
@@ -205,11 +209,11 @@ namespace Homework2_ConsoleApp
             names.Add("Damian");
             names.Add("Maria");
 
-            foreach(string name in names)
+            foreach (string name in names)
             {
                 Console.WriteLine($"Hello {name.ToUpper()}!");
             }
-            Console.WriteLine() ;
+            Console.WriteLine();
             Console.WriteLine(names[2]);
             Console.WriteLine(names[names.Count-1]);
 
@@ -223,7 +227,7 @@ namespace Homework2_ConsoleApp
                 Console.WriteLine($"Helop {name.ToUpper()}!");
             }
             Console.WriteLine();
-            var names2 =new string[] { "Vasile", "Ana", "Felipe" };
+            var names2 = new string[] { "Vasile", "Ana", "Felipe" };
             names2= [.. names2, "Cristina"];
 
             foreach (string name in names2)
@@ -241,10 +245,10 @@ namespace Homework2_ConsoleApp
             {
                 movies[i] = Console.ReadLine();
             }
-            
+
             Console.WriteLine("\nHere they are alphabetically: ");
 
-            Array.Sort( movies );
+            Array.Sort(movies);
 
             for (int i = 0; i < movies.Length; i++)
             {
@@ -302,7 +306,7 @@ namespace Homework2_ConsoleApp
         }
         public static void Test7()
         {
-            string[] cars = { "BMW", "Mercedes", "Mustang","Corvette" };
+            string[] cars = { "BMW", "Mercedes", "Mustang", "Corvette" };
             Console.WriteLine(cars[1]);
 
             Console.WriteLine("--------------------");
@@ -315,7 +319,7 @@ namespace Homework2_ConsoleApp
 
             }
             Console.WriteLine("--------------------");
-            string[] cars2= new string[3];
+            string[] cars2 = new string[3];
             cars2[0]="Volvo";
             cars2[1]="Audi";
             cars2[2]="Peugeot";
@@ -329,32 +333,224 @@ namespace Homework2_ConsoleApp
 
         public static void Test8()
         {
-            decimal[] weeklyCalories= {2500, 2500, 2850, 2550, 3050, 2600, 3100};
-            
-            Console.WriteLine("Calories for day 1: ");
-            weeklyCalories[0]=decimal.Parse(Console.ReadLine());
+            decimal[] weeklyCalories = new decimal[7];
+            decimal total = 0;
 
-            Console.WriteLine("Calories for day 2: ");
-            weeklyCalories[1]=decimal.Parse(Console.ReadLine());
+            for (int i = 0; i <= 6; i++)
+            {
+                Console.WriteLine($"Calories for day {i+1}: ");
+                weeklyCalories[i]=decimal.Parse(Console.ReadLine());
+                total+=weeklyCalories[i];
+            }
+            decimal averageKcalIntake = total/7;
+            decimal recommendedKcalIntake = 3000;
+            decimal threeMonthsKcalBalance = (averageKcalIntake-recommendedKcalIntake)*90;
+            decimal weightChangeInKg = threeMonthsKcalBalance/7000;
+            Console.WriteLine($"This will be your weigth change in 3 months: {weightChangeInKg}");
 
-            Console.WriteLine("Calories for day 3: ");
-            weeklyCalories[2]=decimal.Parse(Console.ReadLine());
+        }
+        //array enter cati bani salvezi in fiecare zi pe 10 zile
+        //calculare economisezi in medie pe zi
+        //cati bani salvezi in 356 zile
+        public static void Test9()
+        {
+            decimal[] weeklyCalories = new decimal[7];
+            decimal total = 0;
 
-            Console.WriteLine("Calories for day 4: ");
-            weeklyCalories[3]=decimal.Parse(Console.ReadLine());
-
-            Console.WriteLine("Calories for day 5: ");
-            weeklyCalories[4]=decimal.Parse(Console.ReadLine());
-
-            Console.WriteLine("Calories for day 6: ");
-            weeklyCalories[5]=decimal.Parse(Console.ReadLine());
-
-            Console.WriteLine("Calories for day 7: ");
-            weeklyCalories[6]=decimal.Parse(Console.ReadLine());
-
-          //to be continued...
+            for (int i = 0; i <= 6; i++)
+            {
+                Console.WriteLine($"Calories for day {i+1}: ");
+                weeklyCalories[i]=decimal.Parse(Console.ReadLine());
+                total+=weeklyCalories[i];
+            }
+            decimal averageKcalIntake = total/7;
+            decimal recommendedKcalIntake = 3000;
+            decimal threeMonthsKcalBalance = (averageKcalIntake-recommendedKcalIntake)*90;
+            decimal weightChangeInKg = threeMonthsKcalBalance/7000;
+            Console.WriteLine($"This will be your weigth change in 3 months: {weightChangeInKg}");
 
 
+        }
+
+        public static void Test10()
+        {
+            decimal[] dailySavings = new decimal[10];
+            decimal total = 0;
+
+            for (int i = 0; i <= 9; i++)
+            {
+                Console.WriteLine($"Savings for day {i+1}: ");
+                dailySavings[i]=decimal.Parse(Console.ReadLine());
+                total+=dailySavings[i];
+            }
+            decimal averageSavings = total/10;
+            decimal savingsPerYear = averageSavings*360;
+           
+            Console.WriteLine($"This will be your savings in 1 year: {savingsPerYear}");
+
+
+        }
+
+
+        public static void Test11()
+        {
+            List<string> food = new List<string>();
+            food.Add("pizza");
+            food.Add("hamburger");
+            food.Add("hotdog");
+            food.Add("fries");
+
+            //food.Remove("fries");
+            food.Insert(0, "sushi");
+            food.Add("fries");
+
+            Console.WriteLine(food.Count);
+            Console.WriteLine(food.IndexOf("pizza"));
+            Console.WriteLine(food.LastIndexOf("fries"));
+            Console.WriteLine(food.Contains("pizza"));
+            food.Sort();
+            food.Reverse();
+            food.Clear();
+            string[] foodArray=food.ToArray();
+
+            foreach (string item in foodArray)
+            {
+                Console.WriteLine(item);
+            }
+        
+        } 
+
+        public static void Test12()
+        {
+            var name1 = "Scott";
+            var names = new List<string> { "<name1>", "Ana", "Felipe" };
+          
+            for (int i = 0; i < names.Count; i++)
+            {
+                Console.WriteLine($"Hello {names[i].ToUpper()}!");
+            }
+
+            names.Add("David");
+            names.Add("Damian");
+            names.Add("Maria");
+
+
+            foreach (var name in names)
+            {
+                Console.WriteLine($"Hello {name.ToUpper()}!");
+            }
+
+        }
+
+        public static void PrintNumbers()
+        {
+
+            List<int> list = new List<int>();
+            int listSize = 0;
+
+            while (true)
+            {
+               
+                Console.WriteLine($"Please input the size of the list:");
+                if (int.TryParse(Console.ReadLine(), out listSize) && listSize > 0)
+                {
+                    break;     //Ieșim din buclă dacă dimensiunea este un număr valid și pozitiv
+                }
+                else
+                {
+                    Console.WriteLine("!!! The size of the list must be a positive number greater than 0 !!! ");
+                }
+            }
+
+
+            for (int i = 0; i < listSize; i++)
+            {
+                Console.WriteLine($"Please input a number for list[{i}]:");
+
+                string input = Console.ReadLine();
+                int number = 0;
+
+                while (!int.TryParse(input, out number))
+                {
+                    Console.WriteLine("!! You have not entered a valid number !!");
+                    Console.WriteLine($"Please input a number for list[{i}]:");
+                    input = Console.ReadLine();  // Căutăm din nou un număr valid
+                }
+
+                // Dacă am ieșit din while, inputul este un număr valid
+                list.Add(number);  // Adaugă numărul în listă
+            }
+       
+
+
+            Console.Write("Your list contains the following items: ");
+            foreach (var item in list)
+            {
+                Console.Write(item+"; ");
+            }
+
+            Console.WriteLine();
+            Console.Write("The list of even numbers is: ");
+            bool existEvenNumbers = false;
+            foreach (var item in list)
+            {
+                if (item % 2==0)
+                {
+                    Console.Write(item+"; ");
+                    existEvenNumbers = true;
+                }
+               
+            }
+            if (!existEvenNumbers)
+            {
+                Console.Write("empty");
+            }
+
+            Console.WriteLine();
+
+            bool existOddNumbers = false;
+            Console.Write("The list of odd numbers is: ");
+            foreach (var item in list)
+            {
+                if ((item % 2==1)|| (item % 2==-1))
+                {
+                    Console.Write(item+"; ");
+                    existOddNumbers=true;
+                }
+            }
+            if (!existOddNumbers)
+            {
+                Console.Write("empty");
+            }
+
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.Write("The sum of even numbers is: ");
+            int sumOfEvenNumbers=0;
+            foreach (var item in list)
+            {
+                if (item % 2==0)
+                {
+                     sumOfEvenNumbers +=item;
+                }
+                
+            }
+            Console.WriteLine(sumOfEvenNumbers);
+
+            int sumOfOddNumbers = 0;
+            Console.Write($"The sum of odd numbers is: ");
+            foreach (var item in list)
+            {
+                if ((item % 2==1) || (item % 2==-1))
+                {
+                    sumOfOddNumbers +=item;
+                    
+                }
+               
+            }
+            Console.WriteLine(sumOfOddNumbers);
+           
         }
 
     }
